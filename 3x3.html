@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+	<head>
+		<title> LDU calculation of 3x3 </title>
+		<link rel="stylesheet" href="3x3.css">
+		
+		
+	</head>
+	 <body>
+	
+		<div class="box">
+	 Input 3x3 matrix<br> 
+	 <div class="matrix-input">
+	 <h5>A=</h5>
+    <input type=text id="a11"placeholder="a11"><input type=text id="a12" placeholder="a12"> <input type=text id="a13" placeholder="a13"><br>
+	<input type=text id='a21'placeholder="a21"><input type=text id='a22' placeholder='a22'> <input type=text id="a23" placeholder="a23"><br>
+    <input type=text id="a31"placeholder="a31"><input type=text id="a32" placeholder="a32"> <input type=text id="a33" placeholder="a33"><br><br><br>
+
+</div>
+
+	<button onclick="complete()"><h3>click here to get matrix as LU and  LDU form.</h3></button><br><br>
+
+
+
+	<div class="matrix-output">
+	<h3>Matrix A=LU as</h3>
+	<h5>L=</h5>
+	<input type=text id="lm11" placeholder="l11" > <input type=text id="lm12" placeholder="l12"><input type=text id="lm13" placeholder="l13"><br>
+	<input type=text id='lm21' placeholder="l21"><input type=text id='lm22' placeholder="l22"><input type=text id="lm23" placeholder="l23"><br>
+	<input type=text id="lm31" placeholder="l31" > <input type=text id="lm32" placeholder="l32"><input type=text id="lm33" placeholder="1"><br><br><br><br>
+
+		<h5>U=</h5>
+	<input type=text id="um11" placeholder="u11" > <input type=text id="um12" placeholder="u12"><input type=text id="um13" placeholder="u13"><br>
+	<input type=text id='um21' placeholder="u21"><input type=text id='um22' placeholder="u22"><input type=text id="um23" placeholder="u23"><br>
+	<input type=text id="um31" placeholder="u31"><input type=text id="um32" placeholder="u32"><input type=text id="um33" placeholder="u33"><br><br><br>
+
+</div>
+<div class="matrix-output">
+	<h3>Now matrix A= LDU'</h3>
+	<h5>U=</h5>
+	<input type=text id="lmm11" placeholder="l11" > <input type=text id="lmm12" placeholder="l12"><input type=text id="lmm13" placeholder="l13"><br>
+	<input type=text id='lmm21' placeholder="l21"><input type=text id="lmm22" placeholder="l22"><input type=text id="lmm23" placeholder="l23"><br>
+	<input type=text id="lmm31" placeholder="l31" > <input type=text id="lmm32" placeholder="l32"><input type=text id="lmm33" placeholder="1"><br><br><br><br>
+
+	<h5>D=</h5>
+	<input type=text id="dm11" placeholder="u11" > <input type=text id="dm12" placeholder="0"><input type=text id="dm13" placeholder="0"><br>
+	<input type=text id='dm21' placeholder="0"><input type=text id='dm22' placeholder="u22"><input type=text id="dm23" placeholder="0"><br>
+	<input type=text id="dm31" placeholder="0" > <input type=text id="dm32" placeholder="0"><input type=text id="dm33" placeholder="u33"><br><br><br><br>
+
+	<h5>U'=</h5>
+	<input type=text id="umm11" placeholder="u_11"><input type=text id="umm12" placeholder="u12/d11"><input type=text id="umm13" placeholder="u13/d11"><br>
+	<input type=text id="umm21" placeholder="0"><input type=text id="umm22" placeholder="1"><input type=text id="umm23" placeholder="u23/d22"><br>
+	<input type=text id="umm31" placeholder="0"><input type=text id="umm32" placeholder="0"><input type=text id="umm33" placeholder="u33/d33"><br><br><br>
+
+</div>
+	  
+	  <button id="matrix1" onclick="matrix1()"><h3>click here for detailed solution.</h3></button><br>
+	  <div class="explanation">
+	  <h2>Step 1: Elimination to make Upper Triangular Form</h2>
+
+	<h3>We find first of all E21 then E31 then E32</h3>
+		<h4>Apply E21 to make a21 zero.</h4>
+	 <p>E21 matrix is just like a Identity matrix, where the elements of the identity matrix of 2nd row 1st element is change that is find as following method.</p>
+		<p> we can take E21 matrix and multipy with original matrix , then we get a21 element of original matrix is zero.</p>
+		<p>E21= as 0=a21+(x)a11;  x= -a21/a11</p>
+		<h5>Now E21 =</h5>
+		<input type=text id="E11" placeholder="1" > <input type=text id="E12" placeholder="0"><input type=text id="E13" placeholder="0"><br>
+	  <input type=text id='E21' placeholder="-a21/a11"><input type=text id='E22' placeholder="1"><input type=text id="E23" placeholder="0"><br>
+	  <input type=text id="E31" placeholder="0" > <input type=text id="E32" placeholder="0"><input type=text id="E33" placeholder="E33"><br><br><br><br>
+	
+
+	  <h5> A'=E21.A matrix </h5>
+	  <input type=text id="E11A" placeholder="E11A" > <input type=text id="E12A" placeholder="E12A"><input type=text id="E13A" placeholder="E13A"><br>
+	  <input type=text id='E21A' placeholder="E21A"><input type=text id='E22A' placeholder="E22A"><input type=text id="E23A" placeholder="E23A"><br>
+	  <input type=text id="E31A" placeholder="E31A" > <input type=text id="E32A" placeholder="E32A"><input type=text id="E33A" placeholder="E33A"><br><br><br><br>
+	<h4>Apply E31 to make a31 zero.</h4>
+	<p>E31 is also a Identity matrix which have the 3rd row of 1st element value as -a31/a11.</p>
+	<p>and the matrix which will get when we multiply with original matrix then matrix of element a32 will get 0.</p>
+	  Now E31 is <br>
+	  <input type=text id="E_11" placeholder="1" > <input type=text id="E_12" placeholder="0"><input type=text id="E_13" placeholder="0"><br>
+	  <input type=text id="E_21" placeholder="0"><input type=text id="E_22" placeholder="1"><input type=text id="E_23" placeholder="0"><br>
+	  <input type=text id="E_31" placeholder="-a31/a11" > <input type=text id="E_32" placeholder="0"><input type=text id="E_33" placeholder="0"><br><br><br><br>
+
+	  <h5> A'' = E31.A' or E31(E21.A) </h5>
+	  <input type=text id="E_11A" placeholder="E_11A"><input type=text id="E_12A" placeholder="E_12A"><input type=text id="E_13A" placeholder="E_13A"><br>
+	  <input type=text id="E_21A" placeholder="E_21A"><input type=text id="E_22A" placeholder="E_22A"><input type=text id="E_23A" placeholder="E_23A"><br>
+	  <input type=text id="E_31A" placeholder="E_31A"><input type=text id="E_32A" placeholder="E_32A"><input type=text id="E_33A" placeholder="E_33A"><br><br><br><br>
+
+	<h4>Apply E32 to make a32 zero.</h4>
+	  <p>E32 is also a Identity matrix which have the 3rd row of 2nd element value as where 0=E_32A+(x)E_22A. so x=-E_32A/E_22A. without changing other element.</p>
+	  <p>and the matrix which will get when we multiply with original matrix then matrix of element a32 will get 0. We find E32 with the help of this A''= E31.E21.A matrix not from original matrix.</p>
+  
+	<h5>E32</h5>
+		<input type=text id="E__11" placeholder="1"><input type=text id="E__12" placeholder="0"><input type=text id="E__13" placeholder="0"><br>
+	    <input type=text id="E__21" placeholder="-a21/a11"><input type=text id="E__22" placeholder="1"><input type=text id="E__23" placeholder="0"><br>
+	    <input type=text id="E__31" placeholder="-a31/a11"><input type=text id="E__32" placeholder="-E_32A/E_22A"><input type=text id="E__33" placeholder="0"><br><br><br><br>
+
+	Now A'''= E32.A'' 0r  E32(E31(E21.A)) matrix is this is also a upper triangular matrix.=<br>
+	<h5>A''' =</h5>
+	 <input type=text id="E__11A"><input type=text id="E__12A"><input type=text id="E__13A" ><br>
+	 <input type=text id="E__21A"><input type=text id="E__22A"><input type=text id="E__23A" ><br>
+	 <input type=text id="E__31A"><input type=text id="E__32A"><input type=text id="E__33A" ><br><br><br><br><hr>
+
+	 <h3>To calculate Lower triangular matrix, we find by using L=inverse of(E32.E31.E21) </h3>
+	 <p>We can write L= E21_inv.E31_inv.E31_inv.</p>
+	 <p>Now calculate the above inverse sepeaely and multiply them.</p>
+	 <p>E21_inv we can find by using Row elimination method.</p>
+		<p>In given matrix of E21 where E21 position is =-a21/a11. we can call n=a21/a11</p>
+		<p>we use agumented matrix like this.</p>
+		<p>[E21|I]=Matrix [E21|I]</p>
+		<p>after some operation we get this</p>
+		<p>[I|E21_inv]=matrix [I|E21_inv]</p>
+		<p>Operations are Row2=Row2-(n)Row1</p>
+		<P>we get the inverse of E21 so </P>
+		<h5>E21_inv</h5>
+	  <input type=text id="E11_inv" placeholder="1" > <input type=text id="E12_inv" placeholder="0"><input type=text id="E13_inv" placeholder="0"><br>
+	  <input type=text id='E21_inv' placeholder="n"><input type=text id='E22_inv' placeholder="1"><input type=text id="E23_inv" placeholder="0"><br>
+	  <input type=text id="E31_inv" placeholder="0" > <input type=text id="E32_inv" placeholder="0"><input type=text id="E33_inv" placeholder="1"><br><br><br><br>
+
+	  <h3>Now find E31_inv</h3>
+	  <p>we can do following operations on E31. We can find this as same process to find E21_inv. Only operations will change.</p>
+	  <p>opeations apply on agumented matrix. </p>
+	  <p>[E31|I]=Matrix [E31|I]</p>
+	  <p>after some operation we get this</p>
+	  <p>[I|E31_inv]=matrix [I|E31_inv]</p>
+	  <p>operations are Row3=Row3-(m)Row1, where m=a31/a11.</p>
+	  <h5>E31_inv</h5>
+	  <input type=text id="E_11_inv" placeholder="1" > <input type=text id="E_12_inv" placeholder="0"><input type=text id="E_13_inv" placeholder="0"><br>
+	  <input type=text id="E_21_inv" placeholder="0"><input type=text id="E_22_inv" placeholder="1"><input type=text id="E_23_inv" placeholder="0"><br>
+	  <input type=text id="E_31_inv" placeholder="m" > <input type=text id="E_32_inv" placeholder="0"><input type=text id="E_33_inv" placeholder="1"><br><br><br><br>
+
+	  <h3>Finding E_32_inv</h3>
+	  <p>To find E_32_inv, we use a similar process as for E_21_inv, with some adjustments in the row operations.</p>
+	  <p>Operations are applied to the augmented matrix.</p>
+	  <p>Starting with [E_32 | I] =Matrix [E_32 | I],</p>
+	  <p>we perform row operations until we achieve the form [I | E_32_inv] =[I | E_32_inv].</p>
+	  <p>The key row operation here is Row3= Row3 - (p)*Row2, where p =E_32A/E_22A. Here, E_32 is derived from the modified matrix. A'' = E_31.E_21.A , rather than from the original matrix.</p>
+	  <p>Thus, finding E_21_inv provides the value of p based on the above data.</p>
+	  <h5>E_32_inv</h5>
+	  
+
+
+	    <input type=text id="E__11_inv" placeholder="1"><input type=text id="E__12_inv" placeholder="0"><input type=text id="E__13_inv" placeholder="0"><br>
+	    <input type=text id="E__21_inv" placeholder="0"><input type=text id="E__22_inv" placeholder="1"><input type=text id="E__23_inv" placeholder="0"><br>
+	    <input type=text id="E__31_inv" placeholder="0"><input type=text id="E__32_inv" placeholder="p"><input type=text id="E__33_inv" placeholder="0"><br><br><br><br>
+
+	<h4>After multiplying we get L= E21_inv.E31_inv.E32_inv.</h4>
+	<h5>L=</h5>
+	  <input type=text id="l11" placeholder="l11" > <input type=text id="l12" placeholder="l12"><input type=text id="l13" placeholder="l13"><br>
+	  <input type=text id='l21' placeholder="l21"><input type=text id='l22' placeholder="l22"><input type=text id="l23" placeholder="l23"><br>
+	  <input type=text id="l31" placeholder="l31" > <input type=text id="l32" placeholder="l32"><input type=text id="l33" placeholder="1"><br><br><br><br>
+
+
+
+	<h3> we can decompose from U to DU'.</h3>
+	<p>lets find D and U</p>
+
+	M<h5>U=</h5>
+	  <input type=text id="u11" placeholder="u11" > <input type=text id="u12" placeholder="u12"><input type=text id="u13" placeholder="u13"><br>
+	  <input type=text id='u21' placeholder="u21"><input type=text id='u22' placeholder="u22"><input type=text id="u23" placeholder="u23"><br>
+	  <input type=text id="u31" placeholder="u31"><input type=text id="u32" placeholder="u32"><input type=text id="u33" placeholder="u33"><br><br><br>
+
+
+	  <p>Here D= matrix where the principle diagonal is as it is as matrix U and rest of elemnts becomes zero.</p>
+		<h5>D=</h5>
+	  <input type=text id="d11" placeholder="u11" > <input type=text id="d12" placeholder="0"><input type=text id="d13" placeholder="0"><br>
+	  <input type=text id='d21' placeholder="0"><input type=text id='d22' placeholder="u22"><input type=text id="d23" placeholder="0"><br>
+	  <input type=text id="d31" placeholder="0" > <input type=text id="d32" placeholder="0"><input type=text id="d33" placeholder="u33"><br><br><br><br>
+
+	  <p>Here U' is applying some operations and we get upper triangular matrix.</p>
+	  <p> here diagonal d11 and d22 simply multiply with U' in each row so directly we can find U'. </p>
+
+	
+	  <h5>U'=</h5>
+	  <input type=text id="u_11" placeholder="u11/d11"><input type=text id="u_12" placeholder="u12/d11"><input type=text id="u_13" placeholder="u13/d11"><br>
+	  <input type=text id="u_21" placeholder="0"><input type=text id="u_22" placeholder="u22/d22"><input type=text id="u_23" placeholder="u23/d22"><br>
+	  <input type=text id="u_31" placeholder="0"><input type=text id="u_32" placeholder="0"><input type=text id="u_33" placeholder="u33/d33"><br><br><br>
+	</div>
+	  <h3><a href="index.html" style="color: blue;font-style: italic; ">Click here to go Index page!!!</a></h3>  
+	</div>
+		<script src="3x3.js"></script>	
+	</body>
+
+</html>
