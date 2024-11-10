@@ -1,0 +1,116 @@
+<html>
+	<head>
+		<title> LDU calculation of 2x2 </title>
+		<link rel="stylesheet" href="2x2.css">
+	</head>
+	 <body>
+		<script src="2x2.js"></script>
+		<div class="box">
+
+<div class="matrix-input">
+	 Input 2x2 matrix<br>
+	<input type=text id="a11" placeholder="a11"> <input type=text id="a12" placeholder="a12"><br>
+	  <input type=text id='a21' placeholder="a21"><input type=text id='a22' placeholder='a22'> <br><br><br>
+</div>
+
+
+
+
+	  <button id="matrix1" onclick="matrix1()">click here to get Matrix as LU and LDU' form.</button>
+
+	  <div class="matrix-output">
+
+	  <h5>L=</h5><input type=number id="l11" placeholder="l11" > <input type=text id="l12" placeholder="l12"><br>
+	  <input type=text id='l21' placeholder="l21"><input type=text id='l22' placeholder="l22"> <br><br><br>
+
+
+	  <h5>U=</h5><input type=number id="u11" placeholder="u11" > <input type=text id="u12" placeholder="u12"><br>
+	  <input type=text id='u21' placeholder="u21"><input type=text id='u22' placeholder="u22"> <br><br><br>
+
+</div>
+
+<div class="matrix-output">
+  
+	<h3>Here LDU'</h3>
+	  <h5>L=</h5><input type=number id="lm11" placeholder="l11" > <input type=text id="lm12" placeholder="l12"><br>
+	  <input type=text id='lm21' placeholder="l21"><input type=text id='lm22' placeholder="l22"> <br><br><br>
+
+
+	  <h5>D=</h5><input type=number id="d11" placeholder="d11" > <input type=text id="d12" placeholder="d12"><br>
+	  <input type=text id='d21' placeholder="d21"><input type=text id='d22' placeholder="d22"> <br><br><br>
+
+
+	  <h5>U' =</h5><input type=number id="umm11" placeholder="u_11" > <input type=text id="umm12" placeholder="u_12"><br>
+	  <input type=text id='umm21' placeholder="u_21"><input type=text id='umm22' placeholder="u_22"> <br><br><br>
+</div>
+
+	  <button onclick="complete()">Click here to get detail solution.</button>
+	  <div class="explanation">
+
+
+			<h3>Transform A into an Upper Triangular Matrix U.</h3>
+
+			<h4>Step 1: Finding Matrix E<sub>21</sub></h4>
+			<p>To create an upper triangular matrix, we need to make the entry at position a<sub>21</sub> equal to 0 using row operations.</p>
+			<p>This is achieved by multiplying Row 1 by a<sub>21</sub>/a<sub>11</sub> and then subtracting it from Row 2.</p>
+			<p>The resulting matrix, called the elimination matrix E<sub>21</sub>, is structured as follows:</p>
+			<p>0 = a<sub>21</sub> + (x)a<sub>11</sub>, where x = -a<sub>21</sub>/a<sub>11</sub>.</p>
+			<h5>E<sub>21</sub> =</h5>
+			
+		<input type=number id="E11" placeholder="1" > <input type=text id="E12" placeholder="0"><br>
+	    <input type=text id='E21' placeholder="x"><input type=text id='E22' placeholder="1"> <br><br><br>
+
+
+		<h3>To get U we need to multiply matrix E21.A</h3>
+
+	<h5>U=</h5>
+	  <input type=number id="um11" placeholder="u11" > <input type=text id="um12" placeholder="u12"><br>
+	  <input type=text id='um21' placeholder="u21"><input type=text id='um22' placeholder="u22"> <br><br><br>
+
+	  <h3>Obtaining "L" Using the Inverse of the Elimination Matrix E21</h3>
+	  <p>To find "L," we calculate the inverse of the elimination matrix E21 by forming an augmented matrix.</p>
+	  <p>We start with [E21 | I] = matrix[E21 | I], where I  is a 2x2 identity matrix.</p>
+	  <p>By applying row operations, we transform this into [I | E21_inv] = matrix[I | E21_inv].</p>
+	  <p>The main row operation used here is Row2 = Row2+ (m)*Row1, where m is defined as the ratio a21/a11 (without the minus sign) from the original E21 matrix.</p>
+	  <p>Once these operations are applied, the inverse E21_inv is found.</p>
+	  <h5>Thus, E21_inv or L =</h5>
+	  
+	  <input type=number id="E11_inv" placeholder="1" > <input type=text id="E12_inv" placeholder="0"><br>
+	  <input type=text id='E21_inv' placeholder="m"><input type=text id='E22_inv' placeholder="1"> <br><br><br>
+
+
+	  <h3>Find D and U' by decomposing matrix U.</h3>
+	  <p>for D we simply extract the principle diagonal element of U matrix and rest element will becomes zero.</p>
+
+			<h4>Here We find D</h4>
+	 <h5>D=</h5>
+	  <input type=number id="dm11" placeholder="d11" > <input type=text id="dm12" placeholder="0"><br>
+	  <input type=text id='dm21' placeholder="0"><input type=text id='dm22' placeholder="d22"> <br><br><br>
+
+
+	  <h3>We find U' as follow.</h3>
+
+	  <p>Here you can see diagonal matrix is multiply with U'.</p>
+	  <p> here diagonal d11 and d22 simply multiply with U' in each row so directly we can find U'. </p>
+
+
+	  <h5>U'=</h5>
+	  <input type=number id="u_11" placeholder="u_11/d11" > <input type=text id="u_12" placeholder="u_12/d11"><br>
+	  <input type=text id='u_21' placeholder="u_21/d22"><input type=text id='u_22' placeholder="u_22/d22"> <br><br><br>
+	</div>
+
+
+
+
+
+
+
+
+
+
+	
+	  <h3><a href="index.html" style="color: blue;font-style: italic; ">Click here to go Index page!!!</a></h3>  
+		</div>	
+	</body>
+
+</html>
